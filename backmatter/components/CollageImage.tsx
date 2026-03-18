@@ -1,0 +1,40 @@
+"use client"
+
+import { motion } from "framer-motion"
+
+export default function CollageImage({
+  src,
+  x,
+  y,
+  rotate,
+  size = 120,
+  opacity = 1
+}: {
+  src: string
+  x: number | string
+  y: number | string
+  rotate: number
+  size?: number
+  opacity?: number
+}) {
+
+  return (
+    <motion.img
+      src={src}
+      initial={{ opacity: 0 }}
+      animate={{ opacity }}
+      transition={{ duration: 1 }}
+
+      style={{
+        position: "absolute",
+        left: typeof x === "number" ? `${x}px` : x,
+        top: typeof y === "number" ? `${y}px` : y,
+        transform: `rotate(${rotate}deg)`,
+        width: size,
+        opacity
+      }}
+
+      className="shadow-lg mix-blend-multiply"
+    />
+  )
+}

@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+:root {
+  --green-dark: #1f3d2b;
+  --green-main: #2e5e3e;
+  --green-light: #d7f5e8;
+  --green-accent: #39ff88;
+
+  /* ACCENTS */
+  --blue-soft: #d6ecff;
+  --pink-soft: #ffe0ec;
+
+  /* BASE */
+  --bg-cream: #f7f5f2;
+}
+
+body {
+  background: var(--bg-cream);
+  color: #0a0a0a;
+  font-family: Arial, Helvetica, sans-serif;
+}
