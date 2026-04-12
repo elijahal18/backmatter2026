@@ -8,7 +8,9 @@ export default function CollageImage({
   y,
   rotate,
   size = 120,
-  opacity = 1
+  opacity = 1,
+  blend = "normal",
+  shadow = true
 }: {
   src: string
   x: number | string
@@ -16,6 +18,8 @@ export default function CollageImage({
   rotate: number
   size?: number
   opacity?: number
+  blend?: "normal" | "multiply"
+  shadow?: boolean
 }) {
 
   return (
@@ -34,7 +38,10 @@ export default function CollageImage({
         opacity
       }}
 
-      className="shadow-lg mix-blend-multiply"
+      className={`
+        ${shadow ? "shadow-lg" : ""}
+        ${blend === "multiply" ? "mix-blend-multiply" : ""}
+      `}
     />
   )
 }
