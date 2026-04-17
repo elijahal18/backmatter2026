@@ -1,11 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import CollageImage from "../components/CollageImage"
 import { FaInstagram } from "react-icons/fa"
 import { Caveat } from "next/font/google"
+
+const previewImages: Record<string, string> = {
+  IOA: "/article_images/IOA/hero.jpg",
+  TCK: "/article_images/TCK/hero.jpg",
+  PAP: "/article_images/PAP/hero.jpg",
+  BM: "/article_images/BM/hero.jpg",
+  WGTLO: "/article_images/WGTLO/hero.jpg",
+  CCT: "/article_images/CCT/hero.jpg",
+}
+
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] })
 const folderColors = [
   "#f3e7c7",
@@ -16,19 +26,19 @@ const folderColors = [
 ]
 const articles = [
   {
-    title: "Star-Spangled Banner Ads",
-    slug: "starspa",
-    description: ""
-  },
-  {
     title: "Our Collective C.R.A.P.",
     slug: "IOA",
     description: "on digital clutter, memory, and what we keep"
   },
   {
-    title: "Third Culture Kids",
-    slug: "TCK",
-    description: "between cultures, building a self"
+    title: "How to Play with Paper and Pixels",
+    slug: "PAP",
+    description: "handmade worlds inside digital ones"
+  },
+  {
+    title: "Who Gets to Log Off?",
+    slug: "WGTLO",
+    description: "disconnection is a privilege"
   },
   {
     title: "That Time I Failed to Archive Back Matter",
@@ -41,14 +51,9 @@ const articles = [
     description: "restructuring, mistrust, and the cost of silence"
   },
   {
-    title: "How to Play with Paper and Pixels",
-    slug: "PAP",
-    description: "handmade worlds inside digital ones"
-  },
-  {
-    title: "Playing Hardball",
-    slug: "PH",
-    description: "labor, precarity, and the fight to unionize"
+    title: "Ceremony, Community, and Tsintskua in Cherán",
+    slug: "CCT",
+    description: "Interviews on murals, heritage and community"
   },
   {
     title: "The Struggle for Safe Use",
@@ -56,20 +61,224 @@ const articles = [
     description: "harm reduction, resistance, and what saves lives"
   },
   {
-    title: "Who Gets to Log Off?",
-    slug: "WGTLO",
-    description: "disconnection is a privilege"
-  },
-  {
     title: "The Workers Justice Project",
     slug: "WJP",
     description: "holding space, building power"
+  },
+  {
+    title: "Between Worlds",
+    slug: "TCK",
+    description: "between cultures, building a self"
+  },
+  {
+    title: "Playing Hardball",
+    slug: "PH",
+    description: "labor, precarity, and the fight to unionize"
   }
 ]
 
+function Grass({ data }: { data: any[] }) {
+  return (
+    <div className="absolute top-[45%] left-0 w-full h-32 pointer-events-none z-20">
+      {data.map((g, i) => (
+        <motion.div
+          key={i}
+          className="absolute bottom-0 rounded-full"
+          style={{
+            left: `${g.left}%`,
+            height: `${g.height}px`,
+            width: `${g.width}px`,
+            background: `linear-gradient(to top, #1f3d2b, #6FAF8F)`,
+            transformOrigin: "bottom",
+          }}
+          animate={{
+            rotate: [g.tilt, g.tilt + 4, g.tilt],
+          }}
+          transition={{
+            duration: 2 + Math.random() * 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function Flowers() {
+  const flowerColors = [
+    "var(--pink)",
+    "var(--orange)",
+    "var(--blue-light)"
+  ]
+
+  return (
+    <div className="absolute top-[57%] left-0 w-full pointer-events-none z-30">
+      {[...Array(6)].map((_, i) => {
+        const left = 10 + i * 14
+        const scale = 0.8 + Math.random() * 0.6
+        const tilt = -8 + Math.random() * 16
+        const petalColor = flowerColors[i % flowerColors.length]
+
+        return (
+          <motion.div
+            key={i}
+            className="absolute flex flex-col items-center"
+            style={{
+              left: `${left}%`,
+              transform: `rotate(${tilt}deg) scale(${scale})`
+            }}
+            animate={{
+              y: [0, -6, 0],
+            }}
+            transition={{
+              duration: 3 + i * 0.3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            {/* 🌸 flower head */}
+            <div className="relative w-4 h-4 mb-[2px]">
+              <div className="absolute w-2 h-2 rounded-full top-0 left-1" style={{ background: petalColor }} />
+              <div className="absolute w-2 h-2 rounded-full top-1 left-0" style={{ background: petalColor }} />
+              <div className="absolute w-2 h-2 rounded-full top-1 left-2" style={{ background: petalColor }} />
+              <div className="absolute w-2 h-2 rounded-full top-2 left-1" style={{ background: petalColor }} />
+
+              {/* center */}
+              <div className="absolute w-1.5 h-1.5 rounded-full top-[5px] left-[5px] bg-[var(--orange-dark)]" />
+            </div>
+
+            {/* 🌿 stem */}
+            <div className="w-[2px] h-10 bg-[var(--green-dark)]" />
+          </motion.div>
+        )
+      })}
+    </div>
+  )
+}
+function SideGrass({ data }: { data: any }) {
+  return (
+    <div className="absolute top-[40%] left-0 w-full h-32 pointer-events-none z-10">
+
+      {/* LEFT SHORT */}
+      {data.leftShort.map((g, i) => (
+        <motion.div
+          key={"ls" + i}
+          className="absolute bottom-0 rounded-full opacity-80"
+          style={{
+            left: `${g.left}%`,
+            height: `${g.height}px`,
+            width: `${g.width}px`,
+            background: `linear-gradient(to top, #1f3d2b, #6FAF8F)`,
+            transformOrigin: "bottom",
+            zIndex: 24 // 🔥 ABOVE folders
+          }}
+          animate={{ rotate: [g.tilt, g.tilt + 4, g.tilt] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
+      ))}
+
+      {/* RIGHT SHORT */}
+      {data.rightShort.map((g, i) => (
+        <motion.div
+          key={"rs" + i}
+          className="absolute bottom-0 rounded-full opacity-80"
+          style={{
+            left: `${g.left}%`,
+            height: `${g.height}px`,
+            width: `${g.width}px`,
+            background: `linear-gradient(to top, #1f3d2b, #6FAF8F)`,
+            transformOrigin: "bottom",
+          }}
+          animate={{ rotate: [g.tilt, g.tilt + 4, g.tilt] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
+      ))}
+
+      {/* LEFT TALL */}
+      {data.leftTall.map((g, i) => (
+        <motion.div
+          key={"lt" + i}
+          className="absolute bottom-0 rounded-full"
+          style={{
+            left: `${g.left}%`,
+            height: `${g.height}px`,
+            width: `${g.width}px`,
+            background: `linear-gradient(to top, #1f3d2b, #9CCF69)`,
+            transformOrigin: "bottom",
+            zIndex: 30 // 🔥 ABOVE folders
+          }}
+          animate={{ rotate: [g.tilt, g.tilt + 2, g.tilt] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+      ))}
+
+      {/* RIGHT TALL */}
+      {data.rightTall.map((g, i) => (
+        <motion.div
+          key={"rt" + i}
+          className="absolute bottom-0 rounded-full"
+          style={{
+            left: `${g.left}%`,
+            height: `${g.height}px`,
+            width: `${g.width}px`,
+            background: `linear-gradient(to top, #1f3d2b, #9CCF69)`,
+            transformOrigin: "bottom",
+          }}
+          animate={{ rotate: [g.tilt, g.tilt + 2, g.tilt] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+      ))}
+
+    </div>
+  )
+}
 export default function Home() {
+  const [hovered, setHovered] = useState<string | null>(null)
   const [open, setOpen] = useState(false)
   const router = useRouter()
+  const [ready, setReady] = useState(false)
+
+  const [grassData] = useState(() =>
+    [...Array(80)].map(() => ({
+      height: 20 + Math.random() * 50,
+      left: Math.random() * 100,
+      width: 1 + Math.random() * 2,
+      tilt: -10 + Math.random() * 20,
+    }))
+  )
+
+  const [sideGrassData] = useState(() => ({
+    leftShort: [...Array(25)].map(() => ({
+      left: + Math.random() * 8,
+      height: 30 + Math.random() * 40,
+      width: 2 + Math.random(),
+      tilt: -6 + Math.random() * 12,
+    })),
+    rightShort: [...Array(25)].map(() => ({
+      left: 92 + Math.random() * 8,
+      height: 30 + Math.random() * 40,
+      width: 2 + Math.random(),
+      tilt: -6 + Math.random() * 12,
+    })),
+    leftTall: [...Array(15)].map(() => ({
+      left: Math.random() * 6,
+      height: 80 + Math.random() * 100,
+      width: 2 + Math.random() * 2,
+      tilt: -4 + Math.random() * 8,
+    })),
+    rightTall: [...Array(10)].map(() => ({
+      left: 94 + Math.random() * 6,
+      height: 80 + Math.random() * 100,
+      width: 2 + Math.random() * 2,
+      tilt: -4 + Math.random() * 8,
+    })),
+  }))
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 120)
+    return () => clearTimeout(t)
+  }, [])
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-[#0f1113]">
@@ -168,80 +377,110 @@ export default function Home() {
           <div className="absolute inset-0 z-0 overflow-visible">
 
             {/* ONLY SHOW WHEN OPEN */}
-            <motion.div
-              animate={{ opacity: open ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
-            >
+            {ready && (
+              <motion.div
+                initial={{ opacity: 0 }} // 👈 important
+                animate={{ opacity: open ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+                className={`absolute inset-0 ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+              >
 
-              {/* STACKED FOLDERS */}
-              <div className="relative w-full h-full px-10 pt-6">
-                {articles.map((a, i) => {
-                  const offset = 15+i * 32
-                  const color = folderColors[i % folderColors.length]
+                {/* STACKED FOLDERS */}
+                <div className="relative w-full h-full px-10 pt-6">
+                  <Grass data={grassData} />
+                  <Flowers />
+                  {articles.map((a, i) => {
+                    const offset = 15+i * 32
+                    const color = folderColors[i % folderColors.length]
 
-                  return (
-                    <motion.div
-                      key={a.slug}
-                      onClick={() => router.push(`/articles/${a.slug}`)}
-                      whileHover={{
-                        y: -8,
-                        scale: 1.02
-                      }}
-                      className="absolute w-[90%] h-[300px] bg-[#f3e7c7] shadow-md cursor-pointer"
-                      style={{
-                        top: `${offset}px`,
-                        left: `${10+i * 10}px`,
-                        zIndex: 10 + i,
-                        backgroundColor: color
-                      }}
-                    >
-                      {/* TAB */}
-                      <div 
-                        className="absolute -top-5 px-3 py-1 text-xs"
+                    return (
+                      <motion.div
+                        data-hover
+                        onMouseEnter={() => setHovered(a.slug)}
+                        onMouseLeave={() => setHovered(null)}
+                        key={a.slug}
+                        onClick={() => router.push(`/articles/${a.slug}`)}
+                        whileHover={{
+                          y: -15,
+                          scale: 1.02
+                        }}
+                        className="absolute w-[90%] h-[300px] bg-[#f3e7c7] shadow-md cursor-pointer"
                         style={{
-                          left: `${40 + (i % 3) * 100}px`,
+                          top: `${offset}px`,
+                          left: `${10+i * 10}px`,
+                          zIndex: 10 + i,
                           backgroundColor: color
                         }}
                       >
-                        {a.title}
-                      </div>
+                        {hovered === a.slug && (
+                      <motion.img
+                        src={previewImages[a.slug]}
+                        className="absolute pointer-events-none"
+                        style={{
+                          top: "-20px",
+                          right: "260px",
+                          width: "120px",
+                          transform: "rotate(6deg)",
+                        }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        transition={{ duration: 0.25 }}
+                      />
+                    )}
+                        {/* TAB */}
+                        <div 
+                          className="absolute -top-5 px-3 py-1 text-xs"
+                          style={{
+                            left: `${40 + (i % 3) * 100}px`,
+                            backgroundColor: color
+                          }}
+                        >
+                          {a.title}
+                        </div>
 
-                      {/* DESC */}
-                      <div className={`absolute top-2 right-4 text-base opacity-80 text-[var(--green-dark)] $ ${caveat.className}`}>
-                        {a.description}
-                      </div>
-                    </motion.div>
-                  )
-                })}
-                {/*<motion.img
-                  src="/bee.png"
-                  className="absolute w-[36px] pointer-events-none z-[999]"
-                  style={{
-                    left: "50%",
-                    top: "6%"
-                  }}
-                  animate={{
-                    x: [0, 40, 80, 20, 0],
-                    y: [0, -20, 10, -10, 0],
-                    rotate: [0, 10, -10, 5, 0]
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />*/}
+                        {/* DESC */}
+                        <div className={`absolute top-2 right-4 text-base opacity-80 text-[var(--green-dark)] ${caveat.className}`}>
+                          {a.description}
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                  <SideGrass data={sideGrassData} />
+                  <motion.img
+                    src="/bee.png"
+                    className="absolute w-[28px] pointer-events-none z-[999]"
+                    style={{
+                      left: "50%",
+                      top: "55%"
+                    }}
+                    animate={{
+                      x: [0, 120, 200, 120, 0, -120, -200, -120, 0],
+                      y: [0, -12, 6, -6, 0, -12, 6, -6, 0],
 
-              </div>
-            </motion.div>
+                      scaleX: [1, 1, 1, -1, -1, -1, -1, 1, 1],
+
+                      rotate: [0, 10, -10, 5, 0, -10, 10, -5, 0],
+                      scale: [1, 1.1, 1, 0.95, 1, 1.1, 1, 0.95, 1]
+                    }}
+                    transition={{
+                      duration: 12,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+
+                </div>
+              </motion.div>
+            )}
           </div>
 
           {/* ================= DRAWER FRONT ================= */}
           <motion.div
+            data-hover
             onClick={() => setOpen((prev) => !prev)}
             animate={{
-              y: open ? 330 : 0,
+              y: open ? 340 : 0,
               scale: open ? 1.05 : 1
             }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}

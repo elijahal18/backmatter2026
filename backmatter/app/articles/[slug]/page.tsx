@@ -20,6 +20,9 @@ const collageMap: Record<string, any> = {
   pap: dynamic(() => import("./collages/pap"), { ssr: false }),
   sfsu: dynamic(() => import("./collages/sfsu"), { ssr: false }),
   ph: dynamic(() => import("./collages/ph"), { ssr: false }),
+  wjp: dynamic(() => import("./collages/wjp"), { ssr: false }),
+  bm: dynamic(() => import("./collages/bm"), { ssr: false }),
+  cct: dynamic(() => import("./collages/cct"), { ssr: false }),
 }
 
 const images = [
@@ -89,7 +92,7 @@ export default function Page() {
     setStains(generated)
   }, [])
   
-
+  if (!meta.title) return null
   return (
     <div className="relative w-full min-h-screen bg-[#e9dcbc] text-[var(--black)]">
       <Link

@@ -1,6 +1,6 @@
 ---
 title: Playing Hardball
-author: Amelia Nonemacher 
+author: Amelia Nonemacher
 ---
 
 Connor Tobin sees instability as the defining feature of lower division soccer in the United States. He spent the decade from 2011 to 2021 drifting between the now-defunct National American Soccer League (NASL) and the United Soccer League (USL), playing under different managers, different ownership, and different cities. “The one constant has been that the player experience has been… suboptimal, being as nice as I possibly can on that,” he says. 

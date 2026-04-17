@@ -18,6 +18,9 @@ body {
   background: var(--white);
   color: var(--black);
   font-family: Arial, Helvetica, sans-serif;
-  cursor: none;
+  cursor: none !important;
   margin: 0;
+}
+a, button, [data-hover] {
+  cursor: none;
 }

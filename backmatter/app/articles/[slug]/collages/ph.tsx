@@ -9,17 +9,17 @@ export default function MemoryCollage() {
       <CollageImage
         src="/article_images/PH/soccer.png"
         x="7%"
-        y="15%"
+        y="12%"
         rotate={2}
-        size={240}
+        size={400}
         opacity={1}
         shadow={false}
       />
       <CollageImage
         src="/article_images/PH/break.png"
         x="76%"
-        y="20%"
-        rotate={2}
+        y="15%"
+        rotate={-60}
         size={320}
         opacity={1}
         shadow={false}
@@ -27,8 +27,8 @@ export default function MemoryCollage() {
       <CollageImage
         src="/article_images/PH/contract.png"
         x="7%"
-        y="40%"
-        rotate={2}
+        y="35%"
+        rotate={-50}
         size={320}
         opacity={1}
         shadow={false}
