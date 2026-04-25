@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import CollageImage from "../components/CollageImage"
+import LogoGlow from "../components/LogoGlow"
 import { FaInstagram } from "react-icons/fa"
 import { Caveat } from "next/font/google"
 
@@ -14,6 +15,11 @@ const previewImages: Record<string, string> = {
   BM: "/article_images/BM/hero.jpg",
   WGTLO: "/article_images/WGTLO/hero.jpg",
   CCT: "/article_images/CCT/hero.jpg",
+  DA: "/article_images/DA/hero.jpg",
+  PH: "/article_images/PH/hero.jpg",
+  WJP: "/article_images/WJP/hero.jpg",
+  NSOT: "/article_images/NSOT/hero.jpg",
+  SFSU: "/article_images/SFSU/img1.jpg",
 }
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] })
@@ -24,62 +30,74 @@ const folderColors = [
   "#f6ecd1",
   "#e6d6aa"
 ]
+const themes = [
+  {
+    key: "green",
+    color: "color-mix(in srgb, var(--green) 45%, #dfd3b4 55%)",
+  },
+  {
+    key: "orange",
+    color: "color-mix(in srgb, var(--orange) 35%, #dfd3b4 65%)",
+  },
+  {
+    key: "blue",
+    color: "color-mix(in srgb, var(--blue-light) 40%, #dfd3b4 60%)",
+  },
+  {
+    key: "pink",
+    color: "color-mix(in srgb, var(--pink) 35%, #dfd3b4 65%)",
+  },
+]
 const articles = [
   {
     title: "Our Collective C.R.A.P.",
     slug: "IOA",
-    description: "on digital clutter, memory, and what we keep"
   },
   {
     title: "How to Play with Paper and Pixels",
     slug: "PAP",
-    description: "handmade worlds inside digital ones"
   },
   {
     title: "Who Gets to Log Off?",
     slug: "WGTLO",
-    description: "disconnection is a privilege"
   },
   {
     title: "That Time I Failed to Archive Back Matter",
     slug: "BM",
-    description: "when archiving fails, what remains?"
   },
   {
     title: "New School, Old Troubles",
     slug: "NSOT",
-    description: "restructuring, mistrust, and the cost of silence"
   },
   {
     title: "Ceremony, Community, and Tsintskua in Cherán",
     slug: "CCT",
-    description: "Interviews on murals, heritage and community"
   },
   {
     title: "The Struggle for Safe Use",
     slug: "SFSU",
-    description: "harm reduction, resistance, and what saves lives"
   },
   {
-    title: "The Workers Justice Project",
+    title: "Blueprints for Belonging",
     slug: "WJP",
-    description: "holding space, building power"
   },
   {
     title: "Between Worlds",
     slug: "TCK",
-    description: "between cultures, building a self"
   },
   {
     title: "Playing Hardball",
     slug: "PH",
-    description: "labor, precarity, and the fight to unionize"
-  }
+  },
+  {
+    title: "Why Does Dropping Acid Leave Such a Bad Taste?",
+    slug: "DA",
+  },
 ]
 
 function Grass({ data }: { data: any[] }) {
   return (
-    <div className="absolute top-[45%] left-0 w-full h-32 pointer-events-none z-20">
+    <div className="absolute top-[51%] left-0 w-full h-32 pointer-events-none z-31">
       {data.map((g, i) => (
         <motion.div
           key={i}
@@ -107,13 +125,13 @@ function Grass({ data }: { data: any[] }) {
 
 function Flowers() {
   const flowerColors = [
-    "var(--pink)",
-    "var(--orange)",
-    "var(--blue-light)"
-  ]
+  "color-mix(in srgb, var(--pink) 85%, white 0%)",
+  "color-mix(in srgb, var(--orange) 85%, white 0%)",
+  "color-mix(in srgb, var(--blue-light) 85%, white 0%)"
+]
 
   return (
-    <div className="absolute top-[57%] left-0 w-full pointer-events-none z-30">
+    <div className="absolute top-[64%] left-0 w-full pointer-events-none z-31">
       {[...Array(6)].map((_, i) => {
         const left = 10 + i * 14
         const scale = 0.8 + Math.random() * 0.6
@@ -158,10 +176,10 @@ function Flowers() {
 }
 function SideGrass({ data }: { data: any }) {
   return (
-    <div className="absolute top-[40%] left-0 w-full h-32 pointer-events-none z-10">
+    <div className="absolute top-[48%] left-0 w-full h-32 pointer-events-none z-10">
 
       {/* LEFT SHORT */}
-      {data.leftShort.map((g, i) => (
+      {data.leftShort.map((g: any, i: number) => (
         <motion.div
           key={"ls" + i}
           className="absolute bottom-0 rounded-full opacity-80"
@@ -179,7 +197,7 @@ function SideGrass({ data }: { data: any }) {
       ))}
 
       {/* RIGHT SHORT */}
-      {data.rightShort.map((g, i) => (
+      {data.rightShort.map((g: any, i: number) => (
         <motion.div
           key={"rs" + i}
           className="absolute bottom-0 rounded-full opacity-80"
@@ -196,7 +214,7 @@ function SideGrass({ data }: { data: any }) {
       ))}
 
       {/* LEFT TALL */}
-      {data.leftTall.map((g, i) => (
+      {data.leftTall.map((g: any, i: number) => (
         <motion.div
           key={"lt" + i}
           className="absolute bottom-0 rounded-full"
@@ -214,7 +232,7 @@ function SideGrass({ data }: { data: any }) {
       ))}
 
       {/* RIGHT TALL */}
-      {data.rightTall.map((g, i) => (
+      {data.rightTall.map((g: any, i: number) => (
         <motion.div
           key={"rt" + i}
           className="absolute bottom-0 rounded-full"
@@ -281,7 +299,8 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#0f1113]">
+    <main className="min-h-screen flex items-center justify-center bg-[#f4efe6]">
+      <LogoGlow />
       <div className="relative w-full flex items-center justify-center">
         {/* SIDE CABINETS (BACKGROUND) */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -331,6 +350,7 @@ export default function Home() {
     bg-gradient-to-b from-[#2b2f34] via-[#1f2327] to-[#14171a]
     shadow-inner border border-black/30">
           {/* NEON SIGN */}
+          {/*
           <motion.div
             className="absolute -top-20 left-1/2 -translate-x-1/2 z-20
                       px-8 py-4 rounded-md
@@ -347,12 +367,10 @@ export default function Home() {
             }}
           >
 
-            {/* inner glow */}
             <div className="absolute inset-0 rounded-md bg-green-400/10 blur-md pointer-events-none" />
 
             <div className="relative text-[28px] tracking-[0.25em] font-light">
 
-              {/* glow layers */}
             <div className="absolute inset-0 blur-md text-[color:var(--green)] opacity-90">
               REBIRTH
             </div>
@@ -360,18 +378,16 @@ export default function Home() {
               REBIRTH
             </div>
 
-            {/* main tube */}
             <div className="relative text-[color:var(--green)] brightness-125">
               REBIRTH
             </div>
 
             </div>
 
-            {/* light spill */}
             <div className="absolute top-full left-1/2 -translate-x-1/2 w-[240px] h-[60px]
               bg-green-400/30 blur-2xl" />
 
-          </motion.div>
+          </motion.div>*/}
 
           {/* == CONTENT AREA == */}
           <div className="absolute inset-0 z-0 overflow-visible">
@@ -391,7 +407,8 @@ export default function Home() {
                   <Flowers />
                   {articles.map((a, i) => {
                     const offset = 15+i * 32
-                    const color = folderColors[i % folderColors.length]
+                    const theme = themes[i % themes.length]
+                    const color = theme.color
 
                     return (
                       <motion.div
@@ -399,7 +416,11 @@ export default function Home() {
                         onMouseEnter={() => setHovered(a.slug)}
                         onMouseLeave={() => setHovered(null)}
                         key={a.slug}
-                        onClick={() => router.push(`/articles/${a.slug}`)}
+                        onClick={() =>
+                          router.push(
+                            `/articles/${a.slug}?theme=${theme.key}`
+                          )
+                        }
                         whileHover={{
                           y: -15,
                           scale: 1.02
@@ -417,20 +438,27 @@ export default function Home() {
                         src={previewImages[a.slug]}
                         className="absolute pointer-events-none"
                         style={{
-                          top: "-20px",
-                          right: "260px",
-                          width: "120px",
-                          transform: "rotate(6deg)",
+                          top: "-60px",
+                          right: "100px",
+                          width: "250px", // 🔥 bigger
                         }}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                        transition={{ duration: 0.25 }}
+                        initial={{ opacity: 0, y: 40, rotate: 0, scale: 0.9 }}
+                        animate={{ 
+                          opacity: 1, 
+                          y: -10, 
+                          rotate: 8,  // 🔥 tilt
+                          scale: 1.05 // 🔥 slight pop
+                        }}
+                        exit={{ opacity: 0, y: 40, rotate: 0, scale: 0.9 }}
+                        transition={{ 
+                          duration: 0.35,
+                          ease: "easeOut"
+                        }}
                       />
                     )}
                         {/* TAB */}
                         <div 
-                          className="absolute -top-5 px-3 py-1 text-xs"
+                          className="absolute -top-5 px-3 py-1 text-sm tracking-wide"
                           style={{
                             left: `${40 + (i % 3) * 100}px`,
                             backgroundColor: color
@@ -439,10 +467,6 @@ export default function Home() {
                           {a.title}
                         </div>
 
-                        {/* DESC */}
-                        <div className={`absolute top-2 right-4 text-base opacity-80 text-[var(--green-dark)] ${caveat.className}`}>
-                          {a.description}
-                        </div>
                       </motion.div>
                     )
                   })}
@@ -480,7 +504,7 @@ export default function Home() {
             data-hover
             onClick={() => setOpen((prev) => !prev)}
             animate={{
-              y: open ? 340 : 0,
+              y: open ? 380 : 0,
               scale: open ? 1.05 : 1
             }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
@@ -509,7 +533,7 @@ export default function Home() {
                 )]
               "
             >
-              BACK MATTER — ISSUE 8
+              ISSUE 8 - REBIRTH
             </div>
 
             {/* LINKS */}
@@ -563,16 +587,6 @@ export default function Home() {
               >
                 <FaInstagram size={18} className="text-[var(--black)]" />
               </a>
-
-              {/*<a
-                href="/past-issues"
-                onClick={(e) => e.stopPropagation()}
-                className="bg-[var(--blue-light)]/20 border border-[var(--blue-light)]/40 
-                          px-4 py-2 shadow-sm hover:bg-[var(--blue-light)]/30 
-                          transition-all duration-200"
-              >
-                past issues
-              </a>*/}
 
             </div>
             <div
