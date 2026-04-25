@@ -1,6 +1,9 @@
 ---
 title: New School, Old Troubles
 author: Ariana Guerra
+editor: Lillian Heckler
+images: Ash Reynolds
+web: Elijah Ager Luckett
 ---
 
 “I saw it on Instagram,” a fifth-year Anthropology student at the New School said, when asked about how they learned their program was going to be indefinitely discontinued and eventually redesigned.
@@ -16,7 +19,7 @@ These voluntary measures cut 7% of faculty and staff, according to an email from
 After months of leadership warning that mass “involuntary separations,” or layoffs, were on the horizon, Provost Richard Kessler and Executive Vice President for Business & Operations and Chief Operating Officer ‌Francisco Pineda, finally announced to the community on March 13th, that these decisions would be finalized on June 1st.
 
 
-Up until these recent, dramatic announcements, leadership had offered little information about the upcoming changes. Over the summer, faculty and staff were invited to be a part of “summer working groups,” in an attempt to come up with solutions to avoid the current measures. Besides what was discussed in these groups, the information accessible to most of the staff, faculty, and student body was only circulated through leaked information and hearsay. Even when community members received communications, they were often incomplete or vague. 
+Up until these recent, dramatic announcements, leadership had offered little information about the upcoming changes. Over the summer, faculty and staff were invited to be a part of “summer working groups,” in an attempt to come up with solutions to avoid the current measures. Besides what was discussed in these groups, [[Right: the information accessible to most of the staff, faculty, and student body was only circulated through leaked information and hearsay. Even when community members received communications, they were often incomplete or vague.]]
 
 “We’ve been getting major announcements from leadership with little guidance or specificity on how and when structural changes, including layoffs and separations, will occur. This uncertainty creates mistrust,” said one Lang staff member.
 
@@ -57,4 +60,4 @@ The New School, once known for its strong sense of social justice and dedicated 
 
 The unsettling feelings of mistrust and lack of respect from leadership throughout the New School community have only grown since the start of the 2020 COVID-19 Pandemic and the Part Time Faculty Strike in the fall of 2022. It’s clear that facing alarming economic challenges is not a new problem. “It’s haunting how similar to October 2020 this all feels,” a staff member said, when reflecting on the uncertainty and stress around the layoffs that are coming. 
 
-The certainty of the New School’s future is unknown. Students, staff and faculty are scared – scared for the quality of their education, community, job security and the New School’s legacy. “In time, there may not even be a New School—just a real-estate company that used to pretend it cared about being a university,” Trice said. 
+The certainty of the New School’s future is unknown. Students, staff and faculty are scared – scared for the quality of their education, community, job security and the New School’s legacy. [[Right: “In time, there may not even be a New School—just a real-estate company that used to pretend it cared about being a university,” Trice said. ]]

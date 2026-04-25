@@ -8,27 +8,27 @@ export default function MemoryCollage() {
 
       <CollageImage
         src="/article_images/CCT/mur1.jpeg"
-        x="7%"
+        x="-7%"
         y="20%"
-        rotate={2}
+        rotate={10}
         size={300}
         opacity={1}
       />
 
       <CollageImage
         src="/article_images/CCT/mur2.jpg"
-        x="76%"
+        x="80%"
         y="55%"
-        rotate={2}
+        rotate={0}
         size={320}
         opacity={1}
       />
 
       <CollageImage
         src="/article_images/CCT/mur3.jpg"
-        x="7%"
+        x="-7%"
         y="80%"
-        rotate={2}
+        rotate={-6}
         size={320}
         opacity={1}
       />

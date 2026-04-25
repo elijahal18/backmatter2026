@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans">
         <SnakeCursor />
         <LayoutGroup>
-          <div className="w-full">
+          <div className="w-full min-h-screen">
             {children}
           </div>
         </LayoutGroup>

@@ -8,7 +8,7 @@ export default function MemoryCollage() {
 
       <CollageImage
         src="/article_images/IOA/BookScanCenter_8.jpg"
-        x="76%"
+        x="77%"
         y="40%"
         rotate={6}
         size={350}
@@ -17,7 +17,7 @@ export default function MemoryCollage() {
 
       <CollageImage
         src="/article_images/IOA/BookScanCenter_10.jpg"
-        x="10%"
+        x="-5%"
         y="70%"
         rotate={2}
         size={320}

@@ -7,8 +7,10 @@ let quoteCounter = 0
 
 export default function SideQuote({
   children,
+  side: forcedSide,
 }: {
   children: React.ReactNode
+  side?: "left" | "right"
 }) {
   const ref = useRef<HTMLSpanElement>(null)
   const [visible, setVisible] = useState(false)
@@ -18,7 +20,9 @@ export default function SideQuote({
     indexRef.current = quoteCounter++
   }
 
-  const side = indexRef.current % 2 === 0 ? "left" : "right"
+  const computedSide =
+  forcedSide ??
+  (indexRef.current % 2 === 0 ? "left" : "right")
 
   const tilt = (indexRef.current % 3 - 1) * 1.5
 
@@ -38,7 +42,7 @@ export default function SideQuote({
         }
       },
       {
-        rootMargin: "0px 0px -70% 0px",
+        rootMargin: "0px 0px -40% 0px",
       }
     )
 
@@ -68,9 +72,9 @@ export default function SideQuote({
         style={{
           top: 0,
           transform: `translateY(-10%) rotate(${tilt}deg)`,
-          ...(side === "left"
-            ? { right: "calc(100% + 500px)" }
-            : { left: "calc(100% + 500px)" }),
+          ...(computedSide === "left"
+            ? { x: "-90%" }
+            : { x: "156%" }),
         }}
         initial={{ opacity: 0.5 }}
         animate={{ opacity: 1 }}

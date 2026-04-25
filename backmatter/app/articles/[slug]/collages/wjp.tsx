@@ -8,8 +8,16 @@ export default function MemoryCollage() {
 
       <CollageImage
         src="/article_images/WJP/wjp1.jpg"
-        x="76%"
-        y="40%"
+        x="80%"
+        y="35%"
+        rotate={6}
+        size={350}
+        opacity={1}
+      />
+      <CollageImage
+        src="/article_images/WJP/wjp2.jpg"
+        x="-7%"
+        y="75%"
         rotate={6}
         size={350}
         opacity={1}

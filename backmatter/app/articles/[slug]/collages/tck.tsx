@@ -17,7 +17,7 @@ export default function MemoryCollage() {
 
       <CollageImage
         src="/article_images/TCK/fun_image.png"
-        x="7%"
+        x="-7%"
         y="60%"
         rotate={2}
         size={340}
@@ -36,7 +36,7 @@ export default function MemoryCollage() {
 
       <CollageImage
         src="/article_images/TCK/losthouse.png"
-        x="70%"
+        x="76%"
         y="80%"
         rotate={2}
         size={340}

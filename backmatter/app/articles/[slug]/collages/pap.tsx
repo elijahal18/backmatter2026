@@ -7,10 +7,19 @@ export default function MemoryCollage() {
     <div className="absolute inset-0 pointer-events-none">
       <CollageImage
         src="/article_images/PAP/collage2.png"
-        x="3%"
+        x="-7%"
         y="40%"
         rotate={2}
-        size={350}
+        size={400}
+        opacity={1}
+        shadow={false}
+      />
+      <CollageImage
+        src="/article_images/PAP/collage3.png"
+        x="-7%"
+        y="80%"
+        rotate={2}
+        size={400}
         opacity={1}
         shadow={false}
       />
