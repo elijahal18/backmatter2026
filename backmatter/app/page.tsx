@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
 import CollageImage from "../components/CollageImage"
 import LogoGlow from "../components/LogoGlow"
@@ -86,12 +86,20 @@ const articles = [
     slug: "TCK",
   },
   {
+    title: "A Veiled Dance",
+    slug: "AVD",
+  },
+  {
     title: "Playing Hardball",
     slug: "PH",
   },
   {
     title: "Why Does Dropping Acid Leave Such a Bad Taste?",
     slug: "DA",
+  },
+  {
+    title: "The Riot in a Writer’s Soul",
+    slug: "RWD",
   },
 ]
 
@@ -298,53 +306,68 @@ export default function Home() {
     return () => clearTimeout(t)
   }, [])
 
+  {/* recognize mobile */}
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
+
+  
+
   return (
     <main className="min-h-screen flex items-center justify-center bg-[#f4efe6]">
       <LogoGlow />
       <div className="relative w-full flex items-center justify-center">
-        {/* SIDE CABINETS (BACKGROUND) */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* SIDE CABINETS (BACKGROUND) on non mobile */}
+        {!isMobile && (
 
-          {/* LEFT CABINET */}
-          <div className="absolute -left-[1px] w-[260px] h-[60vh]
-            bg-gradient-to-b from-[#3a3f45] via-[#2a2f34] to-[#1a1d20]
-            border border-black/40 shadow-2xl opacity-90">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
 
-            {/* metal sheen */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10" />
+            {/* LEFT CABINET */}
+            <div className="absolute -left-[1px] w-[260px] h-[60vh]
+              bg-gradient-to-b from-[#3a3f45] via-[#2a2f34] to-[#1a1d20]
+              border border-black/40 shadow-2xl opacity-90">
 
-            {/* drawers */}
-            {[0,1,2].map(i => (
-              <div
-                key={i}
-                className="absolute left-0 w-full h-[33%] border-t border-white/10"
-                style={{ top: `${i * 33}%` }}
-              >
-                {/* handle */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-16 h-2 bg-neutral-500 rounded-full shadow-inner" />
-              </div>
-            ))}
+              {/* metal sheen */}
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10" />
+
+              {/* drawers */}
+              {[0,1,2].map(i => (
+                <div
+                  key={i}
+                  className="absolute left-0 w-full h-[33%] border-t border-white/10"
+                  style={{ top: `${i * 33}%` }}
+                >
+                  {/* handle */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-16 h-2 bg-neutral-500 rounded-full shadow-inner" />
+                </div>
+              ))}
+            </div>
+
+            {/* RIGHT CABINET */}
+            <div className="absolute -right-[1px] w-[260px] h-[60vh]
+              bg-gradient-to-b from-[#3a3f45] via-[#2a2f34] to-[#1a1d20]
+              border border-black/40 shadow-2xl opacity-90">
+
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10" />
+
+              {[0,1,2].map(i => (
+                <div
+                  key={i}
+                  className="absolute left-0 w-full h-[33%] border-t border-white/10"
+                  style={{ top: `${i * 33}%` }}
+                >
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-16 h-2 bg-neutral-500 rounded-full shadow-inner" />
+                </div>
+              ))}
+            </div>
+
           </div>
-
-          {/* RIGHT CABINET */}
-          <div className="absolute -right-[1px] w-[260px] h-[60vh]
-            bg-gradient-to-b from-[#3a3f45] via-[#2a2f34] to-[#1a1d20]
-            border border-black/40 shadow-2xl opacity-90">
-
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10" />
-
-            {[0,1,2].map(i => (
-              <div
-                key={i}
-                className="absolute left-0 w-full h-[33%] border-t border-white/10"
-                style={{ top: `${i * 33}%` }}
-              >
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-16 h-2 bg-neutral-500 rounded-full shadow-inner" />
-              </div>
-            ))}
-          </div>
-
-        </div>
+        )}
         {/* CABINET */}
         <div className="relative w-[90vw] max-w-[1100px] h-[60vh] rounded overflow-visible
     bg-gradient-to-b from-[#2b2f34] via-[#1f2327] to-[#14171a]
@@ -395,44 +418,58 @@ export default function Home() {
             {/* ONLY SHOW WHEN OPEN */}
             {ready && (
               <motion.div
-                initial={{ opacity: 0 }} // 👈 important
+                initial={{ opacity: 0 }}
                 animate={{ opacity: open ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
                 className={`absolute inset-0 ${open ? "pointer-events-auto" : "pointer-events-none"}`}
               >
 
                 {/* STACKED FOLDERS */}
-                <div className="relative w-full h-full px-10 pt-6">
-                  <Grass data={grassData} />
-                  <Flowers />
+                <div
+                  className={`
+                    relative w-full
+                    ${isMobile ? "p-4 pt-6" : "px-10 pt-6 h-full"}
+                  `}
+                >
+                  {!isMobile && <Grass data={grassData} />}
+                  {!isMobile && <Flowers />}
                   {articles.map((a, i) => {
-                    const offset = 15+i * 32
+                    const offset = 13+i * 25
                     const theme = themes[i % themes.length]
                     const color = theme.color
 
                     return (
                       <motion.div
                         data-hover
-                        onMouseEnter={() => setHovered(a.slug)}
-                        onMouseLeave={() => setHovered(null)}
+                        onMouseEnter={() => !isMobile && setHovered(a.slug)}
+                        onMouseLeave={() => !isMobile && setHovered(null)}
+
+                        whileHover={!isMobile ? { y: -15, scale: 1.02 } : {}}
                         key={a.slug}
                         onClick={() =>
                           router.push(
                             `/articles/${a.slug}?theme=${theme.key}`
                           )
                         }
-                        whileHover={{
-                          y: -15,
-                          scale: 1.02
-                        }}
-                        className="absolute w-[90%] h-[300px] bg-[#f3e7c7] shadow-md cursor-pointer"
+                        className={`
+                          cursor-pointer shadow-md bg-[#f3e7c7]
+                          ${isMobile
+                            ? "relative w-full h-auto mb-4 p-4"
+                            : "absolute w-[90%] h-[300px]"
+                          }
+                        `}
                         style={{
-                          top: `${offset}px`,
-                          left: `${10+i * 10}px`,
-                          zIndex: 10 + i,
+                          ...(isMobile
+                            ? {}
+                            : {
+                                top: `${offset}px`,
+                                left: `${10 + i * 10}px`,
+                                zIndex: 10 + i,
+                              }),
                           backgroundColor: color
                         }}
                       >
+                        <AnimatePresence mode="wait">
                         {hovered === a.slug && (
                       <motion.img
                         src={previewImages[a.slug]}
@@ -440,14 +477,14 @@ export default function Home() {
                         style={{
                           top: "-60px",
                           right: "100px",
-                          width: "250px", // 🔥 bigger
+                          width: "250px", 
                         }}
                         initial={{ opacity: 0, y: 40, rotate: 0, scale: 0.9 }}
                         animate={{ 
                           opacity: 1, 
                           y: -10, 
-                          rotate: 8,  // 🔥 tilt
-                          scale: 1.05 // 🔥 slight pop
+                          rotate: 8,  
+                          scale: 1.05 
                         }}
                         exit={{ opacity: 0, y: 40, rotate: 0, scale: 0.9 }}
                         transition={{ 
@@ -456,6 +493,7 @@ export default function Home() {
                         }}
                       />
                     )}
+                    </AnimatePresence>
                         {/* TAB */}
                         <div 
                           className="absolute -top-5 px-3 py-1 text-sm tracking-wide"
@@ -470,29 +508,31 @@ export default function Home() {
                       </motion.div>
                     )
                   })}
-                  <SideGrass data={sideGrassData} />
-                  <motion.img
-                    src="/bee.png"
-                    className="absolute w-[28px] pointer-events-none z-[999]"
-                    style={{
-                      left: "50%",
-                      top: "55%"
-                    }}
-                    animate={{
-                      x: [0, 120, 200, 120, 0, -120, -200, -120, 0],
-                      y: [0, -12, 6, -6, 0, -12, 6, -6, 0],
+                  {!isMobile && <SideGrass data={sideGrassData} />}
+                  {!isMobile && (
+                    <motion.img
+                      src="/bee.png"
+                      className="absolute w-[28px] pointer-events-none z-[999]"
+                      style={{
+                        left: "50%",
+                        top: "55%"
+                      }}
+                      animate={{
+                        x: [0, 120, 200, 120, 0, -120, -200, -120, 0],
+                        y: [0, -12, 6, -6, 0, -12, 6, -6, 0],
 
-                      scaleX: [1, 1, 1, -1, -1, -1, -1, 1, 1],
+                        scaleX: [1, 1, 1, -1, -1, -1, -1, 1, 1],
 
-                      rotate: [0, 10, -10, 5, 0, -10, 10, -5, 0],
-                      scale: [1, 1.1, 1, 0.95, 1, 1.1, 1, 0.95, 1]
-                    }}
-                    transition={{
-                      duration: 12,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
+                        rotate: [0, 10, -10, 5, 0, -10, 10, -5, 0],
+                        scale: [1, 1.1, 1, 0.95, 1, 1.1, 1, 0.95, 1]
+                      }}
+                      transition={{
+                        duration: 12,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  )}
 
                 </div>
               </motion.div>
@@ -504,8 +544,8 @@ export default function Home() {
             data-hover
             onClick={() => setOpen((prev) => !prev)}
             animate={{
-              y: open ? 380 : 0,
-              scale: open ? 1.05 : 1
+              y: open ? (isMobile ? 200 : 380) : 0,
+              scale: open ? (isMobile ? 1.02 : 1.05) : 1
             }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
             className="absolute inset-0 z-10 cursor-pointer
@@ -587,6 +627,75 @@ export default function Home() {
               >
                 <FaInstagram size={18} className="text-[var(--black)]" />
               </a>
+
+              <motion.div
+                data-hover
+                onClick={(e) => {
+                  e.stopPropagation()
+                  router.push("/rebirtha")
+                }}
+                initial={{ opacity: 0.9 }}
+                animate={{ opacity: [0.9, 1, 0.9] }}
+                whileHover={{
+                  scale: 1.08,
+                  rotate: -4,
+                }}
+                transition={{
+                  opacity: { duration: 3, repeat: Infinity },
+                  scale: { duration: 0.2 }
+                }}
+                className="absolute flex flex-col items-center cursor-pointer group"
+                style={{
+                  bottom: "10px",
+                  right: "120px",
+                  rotate: "-8deg"
+                }}
+              >
+                <img
+                  src="/mousenormal.png"
+                  className="w-12 pointer-events-none select-none"
+                />
+
+                {/* STICKY NOTE TEXT */}
+                <div
+                  className="
+                    relative
+                    mt-1 px-3 py-2
+                    text-[11px] italic
+                    bg-[#f8eebc]
+                    text-[var(--black)]
+                    border border-black/10
+                    shadow-[2px_2px_0px_rgba(0,0,0,0.15)]
+                    group-hover:shadow-[3px_3px_0px_rgba(0,0,0,0.25)]
+                    transition-all duration-200
+                  "
+                >
+                  {/* notebook lines */}
+                  <div className="absolute inset-0 pointer-events-none
+                    bg-[repeating-linear-gradient(
+                      to bottom,
+                      transparent,
+                      transparent 20px,
+                      rgba(0,0,0,0.08) 21px
+                    )]"
+                  />
+
+                  {/* red margin line */}
+                  <div className="absolute left-2 top-0 bottom-0 w-[2px] bg-red-400/40" />
+
+                  <span className="relative group-hover:underline">
+                    who am i?
+                  </span>
+                </div>
+
+                {/* subtle hint */}
+                <motion.div
+                  className="text-[9px] mt-1 text-black/40 opacity-0 group-hover:opacity-100"
+                  initial={false}
+                >
+                  click me
+                </motion.div>
+              </motion.div>
 
             </div>
             <div

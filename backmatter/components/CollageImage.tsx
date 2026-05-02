@@ -39,7 +39,7 @@ export default function CollageImage({
       }}
 
       className={`
-        ${shadow ? "shadow-lg" : ""}
+        ${shadow ? "drop-shadow-[0_8px_10px_rgba(0,0,0,0.6)]" : ""}
         ${blend === "multiply" ? "mix-blend-multiply" : ""}
       `}
     />

@@ -12,7 +12,6 @@ export default function MemoryCollage() {
         rotate={2}
         size={400}
         opacity={1}
-        shadow={false}
       />
       <CollageImage
         src="/article_images/PAP/collage3.png"
@@ -21,7 +20,6 @@ export default function MemoryCollage() {
         rotate={2}
         size={400}
         opacity={1}
-        shadow={false}
       />
       
 

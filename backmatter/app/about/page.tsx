@@ -61,9 +61,8 @@ export default function AboutPage() {
           </p>
 
           <p className="leading-8 font-serif">
-            The goal for this 2026 digital edition is to make reading online feel more communal, physical and alive, drawing from collage, print, and scrappy publishing.
+            Centered around the theme of REBIRTH, this 2026 digital edition aims to make reading online feel more communal, physical, and alive—drawing from collage, print, and the energy of scrappy publishing. In a moment marked by uncertainty, we imagine digital reading as something tactile and collective, where stories don’t just sit on a screen but unfold in relation to one another.
           </p>
-
           {/* MASTHEAD */}
           <div>
             <h2 className="text-2xl tracking-tight mb-6 text-[var(--orange-dark)] font-serif">

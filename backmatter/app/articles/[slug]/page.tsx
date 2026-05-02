@@ -91,13 +91,14 @@ export default function Page() {
 
     // (avoid paper center)
     const getEdgePosition = () => {
-      let x, y
-      do {
-        x = Math.random() * 100
-        y = Math.random() * 100
-      } while (x > 30 && x < 70 && y > 20 && y < 80)
+      const isLeft = Math.random() < 0.5
 
-      return { x: `${x}%`, y: `${y}%` }
+      return {
+        x: isLeft
+          ? `${Math.random() * 15}%`        // 0 → 15%
+          : `${75 + Math.random() * 10}%`,  // 85 → 95%
+        y: `${Math.random() * 100}%`
+      }
     }
     const coffee = Array.from({ length: 2 }).map(() => {
       const pos = getCenterPosition()
@@ -111,7 +112,7 @@ export default function Page() {
       }
     })
 
-    // 🖋️ INK
+    // INK
     const ink = Array.from({ length: 3 }).map(() => {
       const pos = getEdgePosition()
       return {
@@ -132,7 +133,14 @@ export default function Page() {
 
   return (
     <div className="relative w-full min-h-[100dvh] pt-20 pb-30 bg-[#f4efe6] text-[var(--black)]">
-
+      {/* trying to force desktop porportions */}
+      <div
+        className="
+          origin-top
+          scale-[0.65] sm:scale-[0.8] md:scale-100
+          w-[153%] sm:w-[125%] md:w-full
+        "
+      >
       {/* BACK LINK */}
       <Link
         href="/"
@@ -147,7 +155,7 @@ export default function Page() {
         ← Back Matter
       </Link>
 
-      {/* 🔥 FOLDER WRAPPER */}
+      {/* FOLDER WRAPPER */}
       <div className="relative w-[92vw] max-w-[1400px] mx-auto">
 
         <div className="relative">
@@ -345,6 +353,7 @@ export default function Page() {
             blend="multiply"
           />
         ))}
+      </div>
       </div>
     </div>
   )
