@@ -369,9 +369,13 @@ export default function Home() {
           </div>
         )}
         {/* CABINET */}
-        <div className="relative w-[90vw] max-w-[1100px] h-[60vh] rounded overflow-visible
-    bg-gradient-to-b from-[#2b2f34] via-[#1f2327] to-[#14171a]
-    shadow-inner border border-black/30">
+        <div
+          className={`
+            relative w-[90vw] max-w-[1100px] rounded overflow-visible bg-gradient-to-b from-[#2b2f34] via-[#1f2327] to-[#14171a]
+    shadow-inner border border-black/30
+            ${isMobile ? "min-h-screen pb-40" : "h-[60vh]"}
+          `}
+        >
           {/* NEON SIGN */}
           {/*
           <motion.div
@@ -413,7 +417,12 @@ export default function Home() {
           </motion.div>*/}
 
           {/* == CONTENT AREA == */}
-          <div className="absolute inset-0 z-0 overflow-visible">
+          <div
+            className={`
+              z-0 overflow-visible
+              ${isMobile ? "relative" : "absolute inset-0"}
+            `}
+          >
 
             {/* ONLY SHOW WHEN OPEN */}
             {ready && (
@@ -428,7 +437,7 @@ export default function Home() {
                 <div
                   className={`
                     relative w-full
-                    ${isMobile ? "p-4 pt-6" : "px-10 pt-6 h-full"}
+                    ${isMobile ? "p-4 pt-6 flex flex-col gap-4" : "px-10 pt-6 h-full"}
                   `}
                 >
                   {!isMobile && <Grass data={grassData} />}
@@ -498,7 +507,9 @@ export default function Home() {
                         <div 
                           className="absolute -top-5 px-3 py-1 text-sm tracking-wide"
                           style={{
-                            left: `${40 + (i % 3) * 100}px`,
+                            ...(isMobile
+                              ? { left: "12px" }
+                              : { left: `${40 + (i % 3) * 100}px` }),
                             backgroundColor: color
                           }}
                         >
@@ -544,14 +555,16 @@ export default function Home() {
             data-hover
             onClick={() => setOpen((prev) => !prev)}
             animate={{
-              y: open ? (isMobile ? 200 : 380) : 0,
+              y: open ? (isMobile ? 120 : 380) : 0,
               scale: open ? (isMobile ? 1.02 : 1.05) : 1
             }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            className="absolute inset-0 z-10 cursor-pointer
+            className={`absolute inset-0 z-10 cursor-pointer
               bg-gradient-to-b from-[#e3e6ea] via-[#cfd4da] to-[#b7bcc2]
               border-t-[6px] border-[#9aa1a8]
-              shadow-xl"
+              shadow-xl
+              ${isMobile && open ? "pointer-events-none" : ""}
+            `}
           >
 
             {/* LABEL */}
