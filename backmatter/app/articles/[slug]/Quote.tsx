@@ -12,6 +12,14 @@ export default function SideQuote({
   children: React.ReactNode
   side?: "left" | "right"
 }) {
+  const [isMobile, setIsMobile] = useState(false)
+
+useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth < 1024)
+  check()
+  window.addEventListener("resize", check)
+  return () => window.removeEventListener("resize", check)
+}, [])
   const ref = useRef<HTMLSpanElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -53,7 +61,14 @@ export default function SideQuote({
       clearTimeout(timeout)
     }
   }, [])
-
+  if (isMobile) {
+  // MOBILE: just inline highlight
+  return (
+    <span className="bg-[var(--pink)]/20 px-[2px]">
+      {children}
+    </span>
+  )
+}
   return (
     <span className="relative inline">
       <span ref={ref} className="bg-[var(--pink)]/20 px-[2px]">
@@ -62,7 +77,7 @@ export default function SideQuote({
 
       <motion.span
         className="
-          hidden lg:block
+          block lg:block
           absolute
           text-lg
           italic

@@ -20,6 +20,7 @@ const previewImages: Record<string, string> = {
   WJP: "/article_images/WJP/hero.jpg",
   NSOT: "/article_images/NSOT/hero.jpg",
   SFSU: "/article_images/SFSU/img1.jpg",
+  AVD: "/article_images/AVD/hero.jpg",
 }
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] })
@@ -319,8 +320,15 @@ export default function Home() {
   
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#f4efe6]">
-      <LogoGlow />
+    <main
+  className={`
+    min-h-screen flex justify-center bg-[#f4efe6]
+    ${isMobile ? "items-start pt-30 pb-10" : "items-center"}
+  `}
+>
+      <div className={isMobile ? "mt-6" : ""}>
+        <LogoGlow />
+      </div>
       <div className="relative w-full flex items-center justify-center">
         {/* SIDE CABINETS (BACKGROUND) on non mobile */}
         {!isMobile && (
@@ -437,7 +445,7 @@ export default function Home() {
                 <div
                   className={`
                     relative w-full
-                    ${isMobile ? "p-4 pt-6 flex flex-col gap-4" : "px-10 pt-6 h-full"}
+                    ${isMobile ? "p-3 pt-4 flex flex-col gap-2" : "px-10 pt-6 h-full"}
                   `}
                 >
                   {!isMobile && <Grass data={grassData} />}
@@ -555,7 +563,7 @@ export default function Home() {
             data-hover
             onClick={() => setOpen((prev) => !prev)}
             animate={{
-              y: open ? (isMobile ? 120 : 380) : 0,
+              y: open ? (isMobile ? 700 : 380) : 0,
               scale: open ? (isMobile ? 1.02 : 1.05) : 1
             }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
@@ -563,7 +571,6 @@ export default function Home() {
               bg-gradient-to-b from-[#e3e6ea] via-[#cfd4da] to-[#b7bcc2]
               border-t-[6px] border-[#9aa1a8]
               shadow-xl
-              ${isMobile && open ? "pointer-events-none" : ""}
             `}
           >
 
@@ -590,7 +597,12 @@ export default function Home() {
             </div>
 
             {/* LINKS */}
-            <div className="absolute right-10 top-16 flex flex-col gap-3 text-xs">
+            <div
+              className={`
+                absolute right-10 flex flex-col gap-3 text-xs
+                ${isMobile ? "top-30" : "top-16"}
+              `}
+            >
 
               <button
                 onClick={(e) => {

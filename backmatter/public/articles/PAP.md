@@ -1,6 +1,6 @@
 ---
 title: How to Play with Paper and Pixels
-author: Eva_Szilardi-Tierney
+author: Eva Szilardi-Tierney
 editor: Rachel Potter
 images: Giulia Tacchi
 web: Elijah Ager Luckett

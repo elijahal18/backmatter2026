@@ -40,6 +40,14 @@ const DEFAULT_FOLDER =
   "color-mix(in srgb, var(--green) 45%, #dfd3b4 55%)"
 
 export default function Page() {
+  const [isMobile, setIsMobile] = useState(false)
+
+useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth < 768)
+  check()
+  window.addEventListener("resize", check)
+  return () => window.removeEventListener("resize", check)
+}, [])
   const params = useParams()
   const rawSlug = params.slug
   const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug
@@ -132,31 +140,35 @@ export default function Page() {
   if (!meta.title) return null
 
   return (
-    <div className="relative w-full min-h-[100dvh] pt-20 pb-30 bg-[#f4efe6] text-[var(--black)]">
+    <div className="relative w-full min-h-[100dvh] pt-20 pb-30 bg-[#f4efe6] text-[var(--black)] overflow-x-visible">
       {/* trying to force desktop porportions */}
-      <div
-        className="
-          origin-top
-          scale-[0.65] sm:scale-[0.8] md:scale-100
-          w-[153%] sm:w-[125%] md:w-full
-        "
-      >
+<div className="w-full flex justify-center overflow-visible">
+  <div
+    style={{
+      transform: `scale(${isMobile ? 0.50 : 1})`,
+      transformOrigin: "top center",
+      width: isMobile ? "145%" : "100%"
+    }}
+  >
       {/* BACK LINK */}
       <Link
         href="/"
-        className="
-          fixed top-6 left-6 z-50
-          text-sm font-serif
-          text-[var(--green-dark)]/60
-          hover:text-[var(--green-dark)]
-          transition
-        "
+        className={`
+          fixed z-50
+          ${isMobile
+            ? "top-2 left-2 -translate-x-[120%] -translate-y-[140%] px-3 py-2 bg-[#d8d2c7] shadow"
+            : "top-6 left-7 text-[var(--green-dark)]/60"}
+        `}
       >
-        ← Back Matter
+        ← Home
       </Link>
 
       {/* FOLDER WRAPPER */}
-      <div className="relative w-[92vw] max-w-[1400px] mx-auto">
+      <div
+  className={`relative mx-auto ${
+    isMobile ? "w-[140vw] -ml-[7.5vw]" : "w-[92vw]"
+  } max-w-[1400px]`}
+>
 
         <div className="relative">
 
@@ -344,6 +356,7 @@ export default function Page() {
       </div>
 
       {/* STAINS OUTSIDE FOLDER */}
+      {!isMobile && (
       <div className="absolute inset-0 pointer-events-none z-0">
         {inkStains.map((stain, i) => (
           <CollageImage
@@ -353,6 +366,8 @@ export default function Page() {
             blend="multiply"
           />
         ))}
+      </div>
+      )}
       </div>
       </div>
     </div>
