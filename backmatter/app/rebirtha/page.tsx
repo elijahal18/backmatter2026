@@ -64,7 +64,7 @@ export default function ReberthaPage() {
 
           {/* TEXT */}
           <p className="text-sm leading-relaxed">
-            I am Rebirtha, the mascot of Back Matter issue 8.
+            I am Rebertha, the mascot of Back Matter issue 8.
           </p>
 
           <p className="text-sm leading-relaxed">
