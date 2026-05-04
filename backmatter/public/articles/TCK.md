@@ -2,7 +2,7 @@
 title: Between Worlds
 author: Katya Wack
 editor: Fatoumata Bah
-images: Katya Wack and Rayna Salam
+images: Rayna Salam
 web: Elijah Ager Luckett
 ---
 

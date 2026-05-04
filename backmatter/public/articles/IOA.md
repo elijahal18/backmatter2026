@@ -2,7 +2,7 @@
 title: Our Collective C.R.A.P.
 author: Aliyah Mansur
 editor: Katelyn Kimberlin
-images: Montse Marti
+images: Montse Marti & Elijah Ager Luckett
 web: Elijah Ager Luckett
 ---
 

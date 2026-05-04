@@ -2,7 +2,7 @@
 title: The Struggle for Safe Use
 author: Maria Eduarda Tavares Simões
 editor: Austin Tannenbaum
-images: lhon Karwan and Giulia Tacchi
+images: Giulia Tacchi
 web: Elijah
 ---
 

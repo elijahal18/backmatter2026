@@ -315,14 +315,14 @@ useEffect(() => {
               </article>
               {/* FOOTER */}
 <div className="mt-16 pt-10 border-t border-black/10 text-sm text-[var(--green-dark)]/80 font-sans">
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
 
-    {meta.author && (
+    {/*{meta.author && (
       <div>
         <p className="italic text-xs mb-1 opacity-70">Written by</p>
         <p>{meta.author}</p>
       </div>
-    )}
+    )}*/}
 
     {meta.editor && (
       <div>

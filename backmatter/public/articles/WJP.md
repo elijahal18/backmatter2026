@@ -2,7 +2,7 @@
 title: Blueprints for Belonging
 author: Katie Pruden
 editor: Kayley Cassidy
-images: Katya Wack
+images: Montse Marti
 web: Elijah Ager Luckett
 ---
 

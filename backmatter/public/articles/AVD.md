@@ -1,7 +1,7 @@
 ---
 title: A Veil Between Worlds
 author: Katya Wack
-editor: Mandy Kim
+editor: Eva Szilardi-Tierney
 images: Rayna Salam
 web: Elijah Ager Luckett
 ---

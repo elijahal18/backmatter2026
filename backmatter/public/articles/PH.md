@@ -2,7 +2,7 @@
 title: Playing Hardball
 author: Amelia Nonemacher
 editor: Cara Szigethy
-images: Katya Wack
+images: Katya Wack & Elijah Ager Luckett
 web: Elijah
 ---
 

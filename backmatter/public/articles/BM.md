@@ -2,7 +2,7 @@
 title: That Time I Failed to Archive Back Matter
 author: Katie Anne Martinez 
 editor: Kayley Cassidy
-images: Montse Marti
+images: Giulia Tacchi
 web: Elijah Ager Luckett
 ---
 
