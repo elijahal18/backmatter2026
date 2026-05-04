@@ -61,7 +61,7 @@ export default function AboutPage() {
           </p>
 
           <p className="leading-8 font-serif">
-            Centered around the theme of REBIRTH, this 2026 digital edition aims to make reading online feel more communal, physical, and alive—drawing from collage, print, and the energy of scrappy publishing. In a moment marked by uncertainty, we imagine digital reading as something tactile and collective, where stories don’t just sit on a screen but unfold in relation to one another.
+            Centered around the theme of REBIRTH, this 2026 digital edition aims to make reading online feel more communal, physical, and alive — drawing from collage, print, and the energy of scrappy publishing. In a moment marked by uncertainty, we imagine digital reading as something tactile and collective, where stories don’t just sit on a screen but reflect the ideals within our articles.
           </p>
           {/* MASTHEAD */}
           <div>
@@ -91,6 +91,10 @@ export default function AboutPage() {
 
             </div>
           </div>
+          
+          <p className="text-xs font-sans mt-8 opacity-70">
+            Website designed and developed by Elijah Ager Luckett
+          </p>
 
         </div>
 

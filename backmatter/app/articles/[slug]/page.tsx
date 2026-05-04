@@ -315,7 +315,7 @@ useEffect(() => {
               </article>
               {/* FOOTER */}
 <div className="mt-16 pt-10 border-t border-black/10 text-sm text-[var(--green-dark)]/80 font-sans">
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
     {meta.author && (
       <div>
@@ -337,13 +337,13 @@ useEffect(() => {
         <p>{meta.images}</p>
       </div>
     )}
-
+    {/*
     {meta.web && (
       <div>
         <p className="italic text-xs mb-1 opacity-70">Web Article Designed by</p>
         <p>{meta.web}</p>
       </div>
-    )}
+    )}*/}
 
   </div>
 </div>

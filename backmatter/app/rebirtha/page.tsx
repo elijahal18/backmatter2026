@@ -24,7 +24,7 @@ export default function ReberthaPage() {
         <Link
           href="/"
           className="
-            absolute top-4 right-6
+            absolute top-4 right-6 z-20
             px-3 py-1.5
             text-xs font-sans
             bg-[var(--green)]
@@ -54,7 +54,7 @@ export default function ReberthaPage() {
         <div className="relative space-y-5">
 
           {/* TITLE */}
-          <h1 className="text-lg italic">who am i?</h1>
+          <h1 className="text-lg italic">Who am i?</h1>
 
           {/* IMAGE (bigger + centered) */}
           <img
@@ -64,19 +64,15 @@ export default function ReberthaPage() {
 
           {/* TEXT */}
           <p className="text-sm leading-relaxed">
-            i am rebertha.
+            I am Rebirtha, the mascot of Back Matter issue 8.
           </p>
 
           <p className="text-sm leading-relaxed">
-            i live between versions. i shed, i return, i change shape.
+            I shed, I evolve, I change shape.
           </p>
 
           <p className="text-sm leading-relaxed">
-            you might see me across the site—hidden, in the margins, changing.
-          </p>
-
-          <p className="text-sm leading-relaxed">
-            rebirth is not a moment. it’s a process.
+            You might see me across the site—hidden, in the margins.
           </p>
 
           {/* CREDIT NOTE */}

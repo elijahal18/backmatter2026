@@ -18,7 +18,7 @@ export default function MemoryCollage() {
 
       <CollageImage
         src="/article_images/IOA/BookScanCenter_8.jpg"
-        x={m("90%", "77%")}
+        x={m("90%", "80%")}
         y="40%"
         rotate={6}
         size={m(180, 350)}
