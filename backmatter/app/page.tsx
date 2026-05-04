@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
 import CollageImage from "../components/CollageImage"
@@ -106,7 +106,7 @@ const articles = [
 
 function Grass({ data }: { data: any[] }) {
   return (
-    <div className="absolute top-[51%] left-0 w-full h-32 pointer-events-none z-31">
+    <div className="absolute bottom-0 left-0 w-full h-32 pointer-events-none z-31 translate-y-[-60px]">
       {data.map((g, i) => (
         <motion.div
           key={i}
@@ -140,7 +140,7 @@ function Flowers() {
 ]
 
   return (
-    <div className="absolute top-[64%] left-0 w-full pointer-events-none z-31">
+    <div className="absolute bottom-0 left-0 w-full pointer-events-none z-31 translate-y-[-115px]">
       {[...Array(6)].map((_, i) => {
         const left = 10 + i * 14
         const scale = 0.8 + Math.random() * 0.6
@@ -266,9 +266,44 @@ export default function Home() {
   const router = useRouter()
   const [ready, setReady] = useState(false)
 
+  const [vh, setVh] = useState(800)
+
+useEffect(() => {
+  const update = () => setVh(window.innerHeight)
+  update()
+  window.addEventListener("resize", update)
+  return () => window.removeEventListener("resize", update)
+}, [])
+
+const cabinetRef = useRef<HTMLDivElement | null>(null)
+const [cabinetHeight, setCabinetHeight] = useState(0)
+
+useEffect(() => {
+  if (!cabinetRef.current) return
+
+  const update = () => {
+    setCabinetHeight(cabinetRef.current!.offsetHeight)
+  }
+
+  update()
+
+  const observer = new ResizeObserver(update)
+  observer.observe(cabinetRef.current)
+
+  return () => observer.disconnect()
+}, [])
+
+  const scale = Math.min(3, Math.max(1, Math.pow(1000 / vh, 1.6)))
+  const threshold = 480
+
+const scale1 =
+  cabinetHeight < threshold
+    ? 1 + (threshold - cabinetHeight) / 350
+    : 1
+
   const [grassData] = useState(() =>
     [...Array(80)].map(() => ({
-      height: 20 + Math.random() * 50,
+      height: (40 + Math.random() * 50),
       left: Math.random() * 100,
       width: 1 + Math.random() * 2,
       tilt: -10 + Math.random() * 20,
@@ -378,6 +413,7 @@ export default function Home() {
         )}
         {/* CABINET */}
         <div
+        ref={cabinetRef} 
           className={`
             relative w-[90vw] max-w-[1100px] rounded overflow-visible bg-gradient-to-b from-[#2b2f34] via-[#1f2327] to-[#14171a]
     shadow-inner border border-black/30
@@ -448,8 +484,8 @@ export default function Home() {
                     ${isMobile ? "p-3 pt-4 flex flex-col gap-2" : "px-10 pt-6 h-full"}
                   `}
                 >
-                  {!isMobile && <Grass data={grassData} />}
-                  {!isMobile && <Flowers />}
+                  {/*!isMobile && <Grass data={grassData} />*/}
+                  {/*isMobile && <Flowers />*/}
                   {articles.map((a, i) => {
                     const offset = 13+i * 25
                     const theme = themes[i % themes.length]
@@ -573,6 +609,14 @@ export default function Home() {
               shadow-xl
             `}
           >
+            {!isMobile && open && (
+              <div className="absolute top-15 left-0 w-full pointer-events-none z-[-1]">
+                <div className="relative -translate-y-full">
+                  <Grass data={grassData} />
+                  <Flowers />
+                </div>
+              </div>
+            )}
 
             {/* LABEL */}
             <div
