@@ -27,6 +27,7 @@ const collageMap: Record<string, any> = {
   wgtlo: dynamic(() => import("./collages/wgtlo"), { ssr: false }),
   da: dynamic(() => import("./collages/da"), { ssr: false }),
   nsot: dynamic(() => import("./collages/nsot"), { ssr: false }),
+  rwd: dynamic(() => import("./collages/rwd"), { ssr: false }),
 }
 
 const colorMap: Record<string, string> = {
@@ -191,6 +192,7 @@ useEffect(() => {
           >
 
             {/* HERO */}
+            {cleanSlug !== "rwd" && (
             <MotionDiv
               layoutId={`image-${slug}`}
               className="w-full max-w-[1000px] mx-auto h-[500px] overflow-visible mb-10"
@@ -200,6 +202,7 @@ useEffect(() => {
                 className="w-full h-full object-cover"
               />
             </MotionDiv>
+            )}
 
             
             {/* Paper */}
@@ -333,7 +336,7 @@ useEffect(() => {
 
     {meta.images && (
       <div>
-        <p className="italic text-xs mb-1 opacity-70">Images and Design by</p>
+        <p className="italic text-xs mb-1 opacity-70">Images by</p>
         <p>{meta.images}</p>
       </div>
     )}

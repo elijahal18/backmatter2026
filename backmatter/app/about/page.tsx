@@ -57,11 +57,11 @@ export default function AboutPage() {
           {/* BODY */}
           <p className="leading-8 font-serif">
             Back Matter is a space for experimental writing, criticism, and hybrid work focused on media and publication.
-            It brings together fiction, poems, creative nonfiction, and visuals on the topic in one place.
+            It brings together fiction, poems, creative nonfiction, and visuals in one place.
           </p>
 
           <p className="leading-8 font-serif">
-            Centered around the theme of REBIRTH, this 2026 digital edition aims to make reading online feel more communal, physical, and alive — drawing from collage, print, and the energy of scrappy publishing. In a moment marked by uncertainty, we imagine digital reading as something tactile and collective, where stories don’t just sit on a screen but reflect the ideals within our articles.
+            This 2026 digital edition, centered around the theme of REBIRTH aims to make reading online feel more communal, physical, and alive—drawing from collage, print, and the energy of scrappy publishing. In a moment marked by uncertainty, we imagine digital reading as something tactile and collective, where stories don’t just sit on a screen but reflect the ideals within our articles.
           </p>
           {/* MASTHEAD */}
           <div>
@@ -71,13 +71,13 @@ export default function AboutPage() {
 
             <div className="space-y-3 font-sans">
 
-              <p><span className="italic">Managing Editor</span> — Eva Szilardi-Tierny</p>
+              <p><span className="italic">Managing Editor</span> — Eva Szilardi-Tierney</p>
 
               <p><span className="italic">Co-Editors in Chief</span> — Rachel Potter, Kayley Cassidy</p>
 
               <p><span className="italic">Creative Director</span> — Giulia Tacchi</p>
 
-              <p><span className="italic">Associate Editors</span> — Fatoumata Bah, Lillian Heckler, Mandy Kim, Katelyn Kimberlain, Austin Tannenbaum</p>
+              <p><span className="italic">Associate Editors</span> — Fatoumata Bah, Lillian Heckler, Mandy Kim, Katelyn Kimberlin, Austin Tannenbaum</p>
 
               <p><span className="italic">Marketing & Communication Co-Directors</span> — Camila Andrade Pires, Sasha Fuetsch</p>
 
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
               <p><span className="italic">Digital Designer</span> — Elijah Ager Luckett</p>
 
-              <p><span className="italic">Art Director</span> — Montse Marti</p>
+              <p><span className="italic">Art Director</span> — Montse Martí</p>
 
               <p><span className="italic">Print Designers</span> — Ash Reynolds, Rayna Salam, Katya Wack</p>
 

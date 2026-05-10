@@ -21,6 +21,7 @@ const previewImages: Record<string, string> = {
   NSOT: "/article_images/NSOT/hero.jpg",
   SFSU: "/article_images/SFSU/img1.jpg",
   AVD: "/article_images/AVD/hero.jpg",
+  RWD: "/article_images/RWD/bertha.png",
 }
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] })
@@ -647,7 +648,74 @@ const scale1 =
                 ${isMobile ? "top-30" : "top-16"}
               `}
             >
+              <motion.div
+                data-hover
+                onClick={(e) => {
+                  e.stopPropagation()
+                  router.push("/editors-note")
+                }}
+                whileHover={{
+                  scale: 1.04,
+                  y: -2
+                }}
+                className="
+                  absolute
+                  top-[110px]
+                  right-[34px]
+                  z-20
+                  w-[120px]
+                  h-[78px]
+                  bg-[#ece7df]
+                  border border-[#c8b98f]
+                  shadow-[3px_3px_0px_rgba(0,0,0,0.18)]
+                  cursor-pointer
+                  overflow-hidden
+                  group
+                "
+              >
 
+                {/* envelope flap */}
+                <div
+                  className="
+                    absolute top-0 left-0 w-full h-full
+                    bg-[#e2ddd5]
+                    clip-path-envelope
+                    opacity-80
+                  "
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 52%)"
+                  }}
+                />
+
+                {/* subtle paper texture */}
+                <div className="absolute inset-0 opacity-[0.06] bg-[url('/paper.png')]" />
+
+                {/* stamp */}
+                <div className="
+                  absolute top-2 right-2
+                  w-4 h-4
+                  border border-red-400/40
+                  bg-red-100/40
+                " />
+
+                {/* label */}
+                <div className="absolute bottom-3 left-3 right-3">
+                  <p className="text-[9px] uppercase tracking-[0.18em] opacity-50 mb-1">
+                    Editor's Note
+                  </p>
+
+                  <p className="text-[11px] italic leading-none">
+                    open letter
+                  </p>
+                </div>
+
+                {/* hover lift */}
+                <motion.div
+                  className="absolute inset-0 border border-white/20"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                />
+              </motion.div>
               <button
                 onClick={(e) => {
                   e.stopPropagation()

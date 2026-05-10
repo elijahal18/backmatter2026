@@ -1,5 +1,5 @@
 ---
-title: A Veil Between Worlds
+title: A Veiled Dance
 author: Katya Wack
 editor: Eva Szilardi-Tierney
 images: Rayna Salam

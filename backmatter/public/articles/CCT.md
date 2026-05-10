@@ -1,12 +1,12 @@
 ---
 title: Ceremony, Community, and Tsintskua in Cherán 
-author: Ber Nunez
+author: Ber Nuñez
 editor: Fatoumata Bah
 images: Colectivo Cherani
 web: Elijah Ager Luckett
 ---
 
-## An interview with Colectivo Cheranion mural-making, communal life, and cultural renewal.
+## An interview with Colectivo Cherani on mural-making, communal life, and cultural renewal.
 
 In April 2011, the P’urhépecha community of Cherán, in the state of Michoacán, Mexico, rose against organized crime that had been devastating their forests through illegal logging. This act of resistance led to Cherán becoming an autonomous municipality, governed through P’urhépecha organizational models rather than political parties. In the process, the community reclaimed greater control of its land, governance, and collective life.
 
@@ -18,23 +18,23 @@ What distinguishes the collective’s practice is their understanding of art as 
 
 In conversation, the collective reflects on their approach to mural-making.
 
-Ber Nuñez: Can you talk about your approach to mural work?
+**Ber Nuñez**: Can you talk about your approach to mural work?
 
-Colectivo Cherani: Though we each work on a specific part, we don’t imagine the work as separate. It is not always easy, there are a lot of challenges, but we enjoy working as a group. [[Left: We want the work, in the end, to feel as if it was not made by one person, but to truly carry the essence of a group.]]
+**Colectivo Cherani**: Though we each work on a specific part, we don’t imagine the work as separate. It is not always easy, there are a lot of challenges, but we enjoy working as a group. [[Left: We want the work, in the end, to feel as if it was not made by one person, but to truly carry the essence of a group.]]
 
 Muralism always brings other sensations—it is a bit different from seeing a work in a gallery or in a museum. We think it’s more noble and it allows for more possibilities. Mural  painting is for everyone. It  is for people who live here, who are walking by. It’s  about bringing art closer to the people.
 
 
-BN: So public space is important to this practice?
+**BN**: So public space is important to this practice?
 
-CC: Yes. We  feel that making art in a public space opens the possibility for the community to interact, to appropriate it, and become part of the mural. It is a way of rethinking the relationship between creator, work, and territory.
+**CC**: Yes. We  feel that making art in a public space opens the possibility for the community to interact, to appropriate it, and become part of the mural. It is a way of rethinking the relationship between creator, work, and territory.
 
 It is not just about those of us who are painting, but the people who helped us set up the scaffolding, the ropes, the materials—so it is not always about what the mural literally means, but the message of making as coming together. The mural is a celebration of how our community organizes and collaborates neighbor-to-neighbor and block-by-block, overcoming difficulties, and how every small part, in the end, makes a great community.
 
 
-BN: How are the images or symbols of your murals related to P’urhépecha culture?    
+**BN**: How are the images or symbols of your murals related to P’urhépecha culture?    
 
-CC: There are elements that are not always physical, not always tangible. There  is a non-visible world, something that makes us P’urhépecha. The presence of the elders is very important for us. They are an integral part of our self-determination and the way our government is based on customs and traditions. We see it as a legacy, a model of organization, so we can continue defending our territory.
+**CC**: There are elements that are not always physical, not always tangible. There  is a non-visible world, something that makes us P’urhépecha. The presence of the elders is very important for us. They are an integral part of our self-determination and the way our government is based on customs and traditions. We see it as a legacy, a model of organization, so we can continue defending our territory.
 
 For us, this community process functions as a source from which artistic creation springs. Visual and ritual manifestations are present in many aspects of life: from the decoration of a family celebration to the detailed preparation of the altar in the church. We feel that the constant dialogue between traditional practices and contemporary influences is the seed of our creative work. 
 
