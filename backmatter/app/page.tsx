@@ -769,7 +769,7 @@ const scale1 =
                 data-hover
                 onClick={(e) => {
                   e.stopPropagation()
-                  router.push("/rebirtha")
+                  router.push("/rebertha")
                 }}
                 initial={{ opacity: 0.9 }}
                 animate={{ opacity: [0.9, 1, 0.9] }}
