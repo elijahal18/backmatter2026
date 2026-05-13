@@ -75,9 +75,24 @@ export default function ReberthaPage() {
             You might see me across the site—hidden, in the margins.
           </p>
 
+          {/* GAME LINK */}
+          <a
+            href="https://party-drums-78797020.figma.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-block
+              text-sm
+              underline
+              hover:opacity-70
+              transition
+            "
+          >
+            play the Rebertha game ↗
+          </a>
           {/* CREDIT NOTE */}
           <p className="text-[10px] text-black/50 italic pt-2">
-            all designs by Ash Reynolds
+            all designs (and game) by Ash Reynolds
           </p>
 
         </div>
