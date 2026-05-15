@@ -199,7 +199,11 @@ useEffect(() => {
             >
               <img
                 src={`/article_images/${slug}/hero.jpg`}
-                className="w-full h-full object-cover"
+                className={`
+    w-full
+    h-full
+    ${cleanSlug === "tck" ? "object-contain" : "object-cover"}
+  `}
               />
             </MotionDiv>
             )}
